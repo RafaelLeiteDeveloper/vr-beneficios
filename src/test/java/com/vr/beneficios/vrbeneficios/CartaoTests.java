@@ -91,11 +91,13 @@ class CartaoTests {
 
 
 	Cartao mockCartao(){
-		return Cartao.builder()
-				.senha("123")
-				.saldo(new BigDecimal(500))
-				.numeroCartao(123l)
-				.build();
+
+		Cartao cartao = new Cartao();
+		cartao.setSaldo(new BigDecimal(500));
+		cartao.setSenha("123");
+		cartao.setNumeroCartao(123l);
+		return cartao;
+
 	}
 
 	Parametros mockParametros(){

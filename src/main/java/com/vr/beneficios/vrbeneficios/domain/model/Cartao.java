@@ -13,9 +13,9 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @Entity
-@Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Cartao {
+
 
     @Id
     @EqualsAndHashCode.Include

@@ -8,9 +8,11 @@ import com.vr.beneficios.vrbeneficios.domain.exception.DefaultException;
 import com.vr.beneficios.vrbeneficios.domain.repository.CartaoRepository;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 
+@Component
 public class ValidadorRegrasObserverFlow<T> implements Subscriber<TransacaoBuilder> {
     
     private CartaoRepository cartaoRepository;
@@ -46,19 +48,20 @@ public class ValidadorRegrasObserverFlow<T> implements Subscriber<TransacaoBuild
     @Override
     public void onError(Throwable throwable) {}
 
+
     public void validarCartao(TransacaoInput transacaoInput){
        cartaoRepository.findById(transacaoInput.getNumeroCartao())
-            .orElseThrow(() -> new DefaultException(HttpStatus.NOT_FOUND,"CARTAO_INEXISTENTE"));
+            .orElseThrow(() -> new DefaultException(HttpStatus.UNPROCESSABLE_ENTITY,"CARTAO_INEXISTENTE"));
     }
 
     public void validarSenha(TransacaoInput transacaoInput){
         cartaoRepository.findByNumeroCartaoAndSenha(transacaoInput.getNumeroCartao(),transacaoInput.getSenhaCartao())
-            .orElseThrow(() -> new DefaultException(HttpStatus.NOT_FOUND,"SENHA_INVALIDA"));
+            .orElseThrow(() -> new DefaultException(HttpStatus.UNPROCESSABLE_ENTITY,"SENHA_INVALIDA"));
     }
 
     public void validarSaldo(TransacaoInput transacaoInput){
         cartaoRepository.findByNumeroCartaoAndSaldoGreaterThanEqual(transacaoInput.getNumeroCartao(),transacaoInput.getValor())
-            .orElseThrow(() -> new DefaultException(HttpStatus.NOT_FOUND,"SALDO_INSUFICIENTE"));
+            .orElseThrow(() -> new DefaultException(HttpStatus.UNPROCESSABLE_ENTITY,"SALDO_INSUFICIENTE"));
     }
 
    
