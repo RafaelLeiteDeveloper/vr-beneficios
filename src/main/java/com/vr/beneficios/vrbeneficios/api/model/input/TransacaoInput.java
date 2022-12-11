@@ -6,9 +6,11 @@ import javax.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class TransacaoInput {
     
     @DecimalMin(value = "0", message = "Número do cartão deve ser maior que zero")

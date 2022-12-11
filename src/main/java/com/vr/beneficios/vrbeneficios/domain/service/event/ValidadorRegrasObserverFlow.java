@@ -8,6 +8,7 @@ import com.vr.beneficios.vrbeneficios.domain.exception.DefaultException;
 import com.vr.beneficios.vrbeneficios.domain.repository.CartaoRepository;
 
 import org.springframework.http.HttpStatus;
+
 import javax.transaction.Transactional;
 
 public class ValidadorRegrasObserverFlow<T> implements Subscriber<TransacaoBuilder> {
@@ -27,8 +28,9 @@ public class ValidadorRegrasObserverFlow<T> implements Subscriber<TransacaoBuild
         .orElseThrow(() -> new DefaultException(HttpStatus.NOT_FOUND,"CARTAO_INEXISTENTE"));
 
         cartao.setSaldo(cartao.getSaldo().subtract(transacaoInput.getValor()));
+
         cartaoRepository.save(cartao);
-        
+
     }
 
     @Override
@@ -45,7 +47,7 @@ public class ValidadorRegrasObserverFlow<T> implements Subscriber<TransacaoBuild
     public void onError(Throwable throwable) {}
 
     public void validarCartao(TransacaoInput transacaoInput){
-        cartaoRepository.findById(transacaoInput.getNumeroCartao())
+       cartaoRepository.findById(transacaoInput.getNumeroCartao())
             .orElseThrow(() -> new DefaultException(HttpStatus.NOT_FOUND,"CARTAO_INEXISTENTE"));
     }
 
