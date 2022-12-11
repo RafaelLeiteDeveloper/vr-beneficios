@@ -7,9 +7,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class CartaoModel {
+public class CartaoModelSaldo {
     
-    private Long numeroCartao;
-    private String senha;
     private BigDecimal saldo;
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.vr.beneficios.vrbeneficios.api.model.CartaoModel;
+import com.vr.beneficios.vrbeneficios.api.model.CartaoModelSaldo;
 import com.vr.beneficios.vrbeneficios.domain.model.Cartao;
 
 import org.modelmapper.ModelMapper;
@@ -18,6 +19,10 @@ public class CartaoAssembler {
 	
 	public CartaoModel toModel(Cartao cartao) {
 		return modelMapper.map(cartao, CartaoModel.class);
+	}
+
+	public CartaoModelSaldo toModelSaldo(Cartao cartao) {
+		return modelMapper.map(cartao, CartaoModelSaldo.class);
 	}
 	
     

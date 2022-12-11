@@ -1,9 +1,12 @@
 package com.vr.beneficios.vrbeneficios.api.controller;
+
+
 import javax.validation.Valid;
 
 import com.vr.beneficios.vrbeneficios.api.assembler.CartaoAssembler;
 import com.vr.beneficios.vrbeneficios.api.assembler.CartaoDisassembler;
 import com.vr.beneficios.vrbeneficios.api.model.CartaoModel;
+import com.vr.beneficios.vrbeneficios.api.model.CartaoModelSaldo;
 import com.vr.beneficios.vrbeneficios.api.model.input.CartaoInput;
 import com.vr.beneficios.vrbeneficios.domain.model.Cartao;
 import com.vr.beneficios.vrbeneficios.domain.service.CartaoService;
@@ -29,10 +32,10 @@ public class CartaoController {
     private final CartaoDisassembler cartaoDisassembler;
 
     @GetMapping("/{numeroCartao}")
-	public CartaoModel buscar(@PathVariable Long numeroCartao) {
-		Cartao estado = cartaoService.buscarOuFalhar(numeroCartao);
+	public CartaoModelSaldo buscar(@PathVariable Long numeroCartao) {
+		Cartao cartao = cartaoService.buscarOuFalhar(numeroCartao);
 		
-		return cartaoAssembler.toModel(estado);
+		return cartaoAssembler.toModelSaldo(cartao);
 	}
 
     @PostMapping
