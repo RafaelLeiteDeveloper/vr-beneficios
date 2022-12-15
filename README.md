@@ -36,12 +36,12 @@ $ mvn spring-boot:run
 
 Explicar como executar os testes automatizados para este sistema.
 
-### 🔩 Analise os testes de ponta a ponta
+### 🔩 Documentação
 
-Explique que eles verificam esses testes e porquê.
+Acessar a documentação
 
 ```
-Dar exemplos
+http://localhost:8080/swagger-ui/index.html#/
 ```
 
 ### ⌨️ E testes de estilo de codificação
@@ -62,6 +62,7 @@ Mencione as ferramentas que você usou para criar seu projeto
 * [Maven](https://maven.apache.org/) - Gerente de Dependência
 * [Junit](https://junit.org/junit5/) - Usada para teste
 * [Mockito](https://site.mockito.org/) - Usada para teste
+* [Mockito](https://flywaydb.org) - flywaydb para versionamento do banco de dados
 
 ## ✒️ Autores
 

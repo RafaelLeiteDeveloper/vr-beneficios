@@ -1,0 +1,1 @@
+INSERT INTO miniautorizador.cartao (numero_cartao, senha, saldo, data_criacao) VALUES(123, '123', 300, '2022-12-10 13:58:21');
